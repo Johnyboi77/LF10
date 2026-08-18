@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -13,6 +14,7 @@ import {
   UserCircle,
   LogOut,
   School,
+  RefreshCw,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -33,9 +35,16 @@ const secondaryItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [refreshing, setRefreshing] = useState(false);
 
   function handleLogout() {
     router.push('/login');
+  }
+
+  function handleRefresh() {
+    setRefreshing(true);
+    router.refresh();
+    setTimeout(() => setRefreshing(false), 1000);
   }
 
   return (
@@ -95,6 +104,17 @@ export default function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Aktualisieren */}
+      <div className="px-3 pb-2">
+        <button
+          onClick={handleRefresh}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-white/70 hover:bg-white/5 hover:text-white transition-colors"
+        >
+          <RefreshCw className={`h-4 w-4 shrink-0 transition-transform duration-700 ${refreshing ? 'animate-spin' : ''}`} />
+          Aktualisieren
+        </button>
+      </div>
 
       {/* User Footer */}
       <div className="border-t border-white/10 p-4">

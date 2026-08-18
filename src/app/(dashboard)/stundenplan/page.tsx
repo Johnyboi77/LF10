@@ -55,15 +55,23 @@ export default function StundenplanPage() {
     }
 
     if (change?.type === 'vertretung') {
-      const colors = colorMap[lesson.color];
       return (
-        <div className={`rounded-lg border-l-4 ${colors.border} ${colors.bg} px-2 py-1.5 h-full relative`}>
-          <div className={`text-xs font-bold ${colors.text}`}>{lesson.subject}</div>
-          <div className="text-xs text-amber-700 font-medium mt-0.5">
-            ↕ {change.substitute}
-          </div>
-          <div className="text-xs text-gray-400">{change.newRoom ?? lesson.room}</div>
-          <span className="absolute top-1 right-1 rounded text-xs bg-amber-100 text-amber-700 px-1 font-medium">V</span>
+        <div className="rounded-lg border-l-4 border-l-amber-500 bg-amber-50 px-2 py-1.5 h-full relative">
+          <div className="text-xs font-bold text-amber-900 line-through opacity-50">{lesson.subject}</div>
+          <div className="text-xs font-semibold text-amber-800 mt-0.5">↕ {change.substitute}</div>
+          <div className="text-xs text-amber-600">{change.newRoom ?? lesson.room}</div>
+          <span className="absolute top-1 right-1 rounded text-xs bg-amber-200 text-amber-800 px-1 font-bold">V</span>
+        </div>
+      );
+    }
+
+    // Reguläre Stunde — in Live-Modus neutral damit Änderungen hervorstechen
+    if (showLive) {
+      return (
+        <div className="rounded-lg border-l-4 border-l-gray-200 bg-gray-50 px-2 py-1.5 h-full">
+          <div className="text-xs font-semibold text-gray-600">{lesson.subject}</div>
+          <div className="text-xs text-gray-400 mt-0.5">{lesson.teacher}</div>
+          <div className="text-xs text-gray-300">{lesson.room}</div>
         </div>
       );
     }
@@ -100,17 +108,32 @@ export default function StundenplanPage() {
     }
 
     if (change?.type === 'vertretung') {
-      const colors = colorMap[lesson.color];
       return (
         <div key={period} className="flex items-center gap-3 px-4 py-3">
           <div className="text-right w-14 shrink-0">
             <div className="text-xs font-medium text-gray-600">{period}. Std</div>
             <div className="text-xs text-gray-400">{p?.startTime}</div>
           </div>
-          <div className={`rounded border-l-4 ${colors.border} ${colors.bg} px-2 py-1.5 flex-1`}>
-            <div className={`text-sm font-semibold ${colors.text}`}>{lesson.subject}</div>
-            <div className="text-xs text-amber-700 font-medium">Vertretung: {change.substitute}</div>
-            <div className="text-xs text-gray-500">{change.newRoom ?? lesson.room}</div>
+          <div className="rounded border-l-4 border-l-amber-500 bg-amber-50 px-2 py-1.5 flex-1">
+            <div className="text-sm font-semibold text-amber-900 line-through opacity-50">{lesson.subject}</div>
+            <div className="text-xs text-amber-800 font-semibold">↕ Vertretung: {change.substitute}</div>
+            <div className="text-xs text-amber-600">{change.newRoom ?? lesson.room}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // Reguläre Stunde mobile — in Live-Modus neutral
+    if (showLive) {
+      return (
+        <div key={period} className="flex items-center gap-3 px-4 py-3">
+          <div className="text-right w-14 shrink-0">
+            <div className="text-xs font-medium text-gray-500">{period}. Std</div>
+            <div className="text-xs text-gray-400">{p?.startTime}</div>
+          </div>
+          <div className="rounded border-l-4 border-l-gray-200 bg-gray-50 px-2 py-1.5 flex-1">
+            <div className="text-sm font-medium text-gray-500">{lesson.subject}</div>
+            <div className="text-xs text-gray-400">{lesson.teacher} · {lesson.room}</div>
           </div>
         </div>
       );
@@ -130,8 +153,6 @@ export default function StundenplanPage() {
       </div>
     );
   }
-
-  const changeCount = weeklyChanges.length;
 
   return (
     <div className="space-y-4">
@@ -154,11 +175,6 @@ export default function StundenplanPage() {
           >
             <CalendarDays className="h-4 w-4" />
             Aktuelle Woche
-            {showLive && changeCount > 0 && (
-              <span className="ml-1 rounded-full bg-white/20 px-1.5 py-0.5 text-xs font-bold">
-                {changeCount}
-              </span>
-            )}
           </button>
           <button
             onClick={() => setShowLive(false)}
@@ -173,24 +189,6 @@ export default function StundenplanPage() {
           </button>
         </div>
       </div>
-
-      {/* Live-Hinweis */}
-      {showLive && changeCount > 0 && (
-        <div className="flex flex-wrap gap-3 rounded-lg bg-amber-50 border border-amber-200 px-4 py-2.5 text-sm text-amber-800">
-          <span className="font-semibold">Änderungen diese Woche:</span>
-          {weeklyChanges.map((c, i) => (
-            <span key={i} className="flex items-center gap-1">
-              <span className={`inline-flex h-5 w-5 items-center justify-center rounded text-xs font-bold ${
-                c.type === 'entfall' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'
-              }`}>
-                {c.type === 'entfall' ? '!' : 'V'}
-              </span>
-              {dayLabels[c.day]}, {c.period}. Std. – {c.type === 'entfall' ? 'Entfall' : `Vertretung (${c.substitute})`}
-              {i < weeklyChanges.length - 1 ? ' ·' : ''}
-            </span>
-          ))}
-        </div>
-      )}
 
       {/* Desktop Table */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-x-auto hidden md:block">
@@ -254,28 +252,6 @@ export default function StundenplanPage() {
         })}
       </div>
 
-      {/* Legende */}
-      <div className="flex flex-wrap gap-2">
-        {Object.entries({
-          Mathematik: 'blue', Deutsch: 'emerald', Englisch: 'violet',
-          Physik: 'amber', Geschichte: 'rose', Informatik: 'cyan',
-          Sport: 'orange', Kunst: 'pink',
-        }).map(([subject, color]) => (
-          <span key={subject} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${colorMap[color].badge}`}>
-            {subject}
-          </span>
-        ))}
-        {showLive && (
-          <>
-            <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium bg-red-100 text-red-700">
-              Entfall
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium bg-amber-100 text-amber-700">
-              V Vertretung
-            </span>
-          </>
-        )}
-      </div>
     </div>
   );
 }

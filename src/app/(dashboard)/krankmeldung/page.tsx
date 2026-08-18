@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { HeartPulse, Info } from 'lucide-react';
+import { HeartPulse, Info, ClipboardList } from 'lucide-react';
 import Toast from '@/components/ui/Toast';
+import Badge from '@/components/ui/Badge';
+
+const PREVIOUS_REPORTS = [
+  { id: 1, von: '14.01.2025', bis: '15.01.2025', grund: 'Krankheit', tage: 2 },
+  { id: 2, von: '03.12.2024', bis: '03.12.2024', grund: 'Arzttermin', tage: 1 },
+  { id: 3, von: '07.11.2024', bis: '08.11.2024', grund: 'Krankheit', tage: 2 },
+];
 
 const REASONS = [
   { value: 'krankheit', label: 'Krankheit' },
@@ -53,11 +60,15 @@ export default function KrankmeldungPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-2xl">
+    <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Krankmeldung</h1>
         <p className="text-sm text-gray-500 mt-0.5">Melde deine Abwesenheit direkt über das Portal.</p>
       </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      {/* Left: Info + Form */}
+      <div className="lg:col-span-2 space-y-4">
 
       {/* Info Box */}
       <div className="flex gap-3 rounded-lg bg-blue-50 border border-blue-100 p-4">
@@ -186,6 +197,35 @@ export default function KrankmeldungPage() {
           </div>
         </form>
       </div>
+
+      </div>{/* end left column */}
+
+      {/* Right: Letzte Krankmeldungen */}
+      <div className="flex flex-col h-full">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm flex flex-col h-full">
+          <div className="flex items-center gap-2 px-5 py-4 border-b border-gray-100">
+            <ClipboardList className="h-4 w-4 text-school-primary" />
+            <h2 className="text-sm font-semibold text-gray-800">Letzte Krankmeldungen</h2>
+          </div>
+          <ul className="divide-y divide-gray-50 flex-1">
+            {PREVIOUS_REPORTS.map((r) => (
+              <li key={r.id} className="px-5 py-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-sm font-medium text-gray-700">
+                      {r.von}{r.von !== r.bis ? ` – ${r.bis}` : ''}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-0.5">{r.grund} · {r.tage} {r.tage === 1 ? 'Tag' : 'Tage'}</p>
+                  </div>
+                  <Badge variant="default">eingereicht</Badge>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      </div>{/* end grid */}
 
       {toast && (
         <Toast
