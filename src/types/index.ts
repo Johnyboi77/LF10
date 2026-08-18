@@ -24,9 +24,19 @@ export interface Lesson {
 
 export interface GradeRow {
   subject: string;
+  jahrgang: number;
   halbjahr: 1 | 2;
   grades: number[];
   average: number;
+}
+
+export interface WeeklyChange {
+  day: 'Mo' | 'Di' | 'Mi' | 'Do' | 'Fr';
+  period: number;
+  type: 'entfall' | 'vertretung';
+  substitute?: string;
+  newRoom?: string;
+  note?: string;
 }
 
 export interface Teacher {

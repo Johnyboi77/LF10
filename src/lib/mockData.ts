@@ -11,7 +11,7 @@ import type {
 
 export const student: Student = {
   id: 'S2024001',
-  name: 'Max Mustermann',
+  name: 'Jonas Frey',
   klasse: '10A',
   einschreibedatum: '01.08.2024',
   geburtsdatum: '15.03.2009',
@@ -69,31 +69,97 @@ export const lessons: Lesson[] = [
 ];
 
 export const grades: GradeRow[] = [
-  { subject: 'Mathematik', halbjahr: 1, grades: [2, 3, 2, 3], average: 2.5 },
-  { subject: 'Deutsch', halbjahr: 1, grades: [2, 1, 2, 2], average: 1.75 },
-  { subject: 'Englisch', halbjahr: 1, grades: [1, 2, 1, 1], average: 1.25 },
-  { subject: 'Physik', halbjahr: 1, grades: [3, 4, 3, 3], average: 3.25 },
-  { subject: 'Geschichte', halbjahr: 1, grades: [2, 2, 3, 2], average: 2.25 },
-  { subject: 'Informatik', halbjahr: 1, grades: [1, 1, 2, 1], average: 1.25 },
-  { subject: 'Mathematik', halbjahr: 2, grades: [3, 2, 3, 2], average: 2.5 },
-  { subject: 'Deutsch', halbjahr: 2, grades: [2, 2, 1, 2], average: 1.75 },
-  { subject: 'Englisch', halbjahr: 2, grades: [1, 1, 2, 1], average: 1.25 },
-  { subject: 'Physik', halbjahr: 2, grades: [3, 3, 4, 3], average: 3.25 },
-  { subject: 'Geschichte', halbjahr: 2, grades: [2, 3, 2, 2], average: 2.25 },
-  { subject: 'Informatik', halbjahr: 2, grades: [1, 2, 1, 1], average: 1.25 },
+  // Klasse 5
+  { subject: 'Mathematik', jahrgang: 5, halbjahr: 1, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Deutsch', jahrgang: 5, halbjahr: 1, grades: [3, 2, 3, 3], average: 2.75 },
+  { subject: 'Englisch', jahrgang: 5, halbjahr: 1, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Sachkunde', jahrgang: 5, halbjahr: 1, grades: [2, 2, 2, 1], average: 1.75 },
+  { subject: 'Mathematik', jahrgang: 5, halbjahr: 2, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Deutsch', jahrgang: 5, halbjahr: 2, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Englisch', jahrgang: 5, halbjahr: 2, grades: [2, 2, 1, 2], average: 1.75 },
+  { subject: 'Sachkunde', jahrgang: 5, halbjahr: 2, grades: [1, 2, 2, 2], average: 1.75 },
+  // Klasse 6
+  { subject: 'Mathematik', jahrgang: 6, halbjahr: 1, grades: [3, 2, 3, 3], average: 2.75 },
+  { subject: 'Deutsch', jahrgang: 6, halbjahr: 1, grades: [2, 2, 2, 3], average: 2.25 },
+  { subject: 'Englisch', jahrgang: 6, halbjahr: 1, grades: [2, 1, 2, 2], average: 1.75 },
+  { subject: 'Geschichte', jahrgang: 6, halbjahr: 1, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Mathematik', jahrgang: 6, halbjahr: 2, grades: [2, 3, 3, 2], average: 2.5 },
+  { subject: 'Deutsch', jahrgang: 6, halbjahr: 2, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Englisch', jahrgang: 6, halbjahr: 2, grades: [1, 2, 1, 2], average: 1.5 },
+  { subject: 'Geschichte', jahrgang: 6, halbjahr: 2, grades: [2, 2, 2, 3], average: 2.25 },
+  // Klasse 7
+  { subject: 'Mathematik', jahrgang: 7, halbjahr: 1, grades: [3, 3, 2, 3], average: 2.75 },
+  { subject: 'Deutsch', jahrgang: 7, halbjahr: 1, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Englisch', jahrgang: 7, halbjahr: 1, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 7, halbjahr: 1, grades: [3, 4, 3, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 7, halbjahr: 1, grades: [2, 2, 2, 2], average: 2.0 },
+  { subject: 'Mathematik', jahrgang: 7, halbjahr: 2, grades: [3, 2, 3, 3], average: 2.75 },
+  { subject: 'Deutsch', jahrgang: 7, halbjahr: 2, grades: [2, 2, 2, 3], average: 2.25 },
+  { subject: 'Englisch', jahrgang: 7, halbjahr: 2, grades: [1, 1, 2, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 7, halbjahr: 2, grades: [3, 3, 4, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 7, halbjahr: 2, grades: [2, 2, 1, 2], average: 1.75 },
+  // Klasse 8
+  { subject: 'Mathematik', jahrgang: 8, halbjahr: 1, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Deutsch', jahrgang: 8, halbjahr: 1, grades: [2, 2, 1, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 8, halbjahr: 1, grades: [1, 1, 2, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 8, halbjahr: 1, grades: [3, 3, 3, 4], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 8, halbjahr: 1, grades: [2, 2, 2, 3], average: 2.25 },
+  { subject: 'Informatik', jahrgang: 8, halbjahr: 1, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Mathematik', jahrgang: 8, halbjahr: 2, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Deutsch', jahrgang: 8, halbjahr: 2, grades: [2, 1, 2, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 8, halbjahr: 2, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 8, halbjahr: 2, grades: [3, 4, 3, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 8, halbjahr: 2, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Informatik', jahrgang: 8, halbjahr: 2, grades: [1, 1, 2, 1], average: 1.25 },
+  // Klasse 9
+  { subject: 'Mathematik', jahrgang: 9, halbjahr: 1, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Deutsch', jahrgang: 9, halbjahr: 1, grades: [2, 1, 2, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 9, halbjahr: 1, grades: [1, 1, 2, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 9, halbjahr: 1, grades: [3, 3, 4, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 9, halbjahr: 1, grades: [2, 2, 2, 2], average: 2.0 },
+  { subject: 'Informatik', jahrgang: 9, halbjahr: 1, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Mathematik', jahrgang: 9, halbjahr: 2, grades: [3, 2, 2, 3], average: 2.5 },
+  { subject: 'Deutsch', jahrgang: 9, halbjahr: 2, grades: [2, 2, 1, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 9, halbjahr: 2, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 9, halbjahr: 2, grades: [3, 3, 3, 4], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 9, halbjahr: 2, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Informatik', jahrgang: 9, halbjahr: 2, grades: [1, 1, 1, 2], average: 1.25 },
+  // Klasse 10 (aktuell)
+  { subject: 'Mathematik', jahrgang: 10, halbjahr: 1, grades: [2, 3, 2, 3], average: 2.5 },
+  { subject: 'Deutsch', jahrgang: 10, halbjahr: 1, grades: [2, 1, 2, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 10, halbjahr: 1, grades: [1, 2, 1, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 10, halbjahr: 1, grades: [3, 4, 3, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 10, halbjahr: 1, grades: [2, 2, 3, 2], average: 2.25 },
+  { subject: 'Informatik', jahrgang: 10, halbjahr: 1, grades: [1, 1, 2, 1], average: 1.25 },
+  { subject: 'Mathematik', jahrgang: 10, halbjahr: 2, grades: [3, 2, 3, 2], average: 2.5 },
+  { subject: 'Deutsch', jahrgang: 10, halbjahr: 2, grades: [2, 2, 1, 2], average: 1.75 },
+  { subject: 'Englisch', jahrgang: 10, halbjahr: 2, grades: [1, 1, 2, 1], average: 1.25 },
+  { subject: 'Physik', jahrgang: 10, halbjahr: 2, grades: [3, 3, 4, 3], average: 3.25 },
+  { subject: 'Geschichte', jahrgang: 10, halbjahr: 2, grades: [2, 3, 2, 2], average: 2.25 },
+  { subject: 'Informatik', jahrgang: 10, halbjahr: 2, grades: [1, 2, 1, 1], average: 1.25 },
+];
+
+// Aktuelle Wochenstundenplanänderungen
+export const weeklyChanges: import('@/types').WeeklyChange[] = [
+  // Montag: Fr. Weber krankgeschrieben → Mathematik Std. 1+2 Entfall
+  { day: 'Mo', period: 1, type: 'entfall', note: 'Fr. Weber krankgeschrieben' },
+  { day: 'Mo', period: 2, type: 'entfall', note: 'Fr. Weber krankgeschrieben' },
+  // Donnerstag: Std. 5 Entfall, Std. 7 Vertretung
+  { day: 'Do', period: 5, type: 'entfall', note: 'Selbstlernzeit (Bibliothek)' },
+  { day: 'Do', period: 7, type: 'vertretung', substitute: 'Hr. Wolf', newRoom: 'R205', note: 'Raumwechsel' },
 ];
 
 export const teachers: Teacher[] = [
-  { id: 't1', name: 'Dr. Petra Weber', subject: 'Mathematik', email: 'p.weber@schule-musterstadt.de' },
-  { id: 't2', name: 'Thomas Schneider', subject: 'Deutsch', email: 't.schneider@schule-musterstadt.de' },
-  { id: 't3', name: 'Sarah Müller', subject: 'Englisch', email: 's.mueller@schule-musterstadt.de' },
-  { id: 't4', name: 'Dr. Klaus Braun', subject: 'Physik', email: 'k.braun@schule-musterstadt.de' },
-  { id: 't5', name: 'Anna Fischer', subject: 'Geschichte', email: 'a.fischer@schule-musterstadt.de' },
-  { id: 't6', name: 'Michael Richter', subject: 'Informatik', email: 'm.richter@schule-musterstadt.de' },
-  { id: 't7', name: 'Jan Koch', subject: 'Sport', email: 'j.koch@schule-musterstadt.de' },
-  { id: 't8', name: 'Nina Lange', subject: 'Kunst', email: 'n.lange@schule-musterstadt.de' },
-  { id: 't9', name: 'Prof. Karl Wolf', subject: 'Biologie', email: 'k.wolf@schule-musterstadt.de' },
-  { id: 't10', name: 'Eva Hartmann', subject: 'Chemie', email: 'e.hartmann@schule-musterstadt.de' },
+  { id: 't1', name: 'Dr. Petra Weber', subject: 'Mathematik', email: 'web@musterschule.de' },
+  { id: 't2', name: 'Thomas Schneider', subject: 'Deutsch', email: 'sch@musterschule.de' },
+  { id: 't3', name: 'Sarah Müller', subject: 'Englisch', email: 'mue@musterschule.de' },
+  { id: 't4', name: 'Dr. Klaus Braun', subject: 'Physik', email: 'bra@musterschule.de' },
+  { id: 't5', name: 'Anna Fischer', subject: 'Geschichte', email: 'fis@musterschule.de' },
+  { id: 't6', name: 'Michael Richter', subject: 'Informatik', email: 'ric@musterschule.de' },
+  { id: 't7', name: 'Jan Koch', subject: 'Sport', email: 'koc@musterschule.de' },
+  { id: 't8', name: 'Nina Lange', subject: 'Kunst', email: 'lan@musterschule.de' },
+  { id: 't9', name: 'Prof. Karl Wolf', subject: 'Biologie', email: 'wol@musterschule.de' },
+  { id: 't10', name: 'Eva Hartmann', subject: 'Chemie', email: 'har@musterschule.de' },
 ];
 
 export const vertretungsplan: VertretungsEntry[] = [

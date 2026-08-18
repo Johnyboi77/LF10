@@ -5,7 +5,7 @@
 # Branches Workflow anpassen zu working in dev wenn software live ist!! vorher dran gewöhnen
 
 REPO_PATH="$(cd "$(dirname "$0")" && pwd)"
-REMOTE_URL="git@github.com/Johnyboi77/LF10.git"
+REMOTE_URL="git@github.com:Johnyboi77/LF10.git"
 BRANCH="${1:-main}"
 
 cd "$REPO_PATH" || exit 1
