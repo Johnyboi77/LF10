@@ -38,7 +38,7 @@ export default function LoginPage() {
           <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 mb-4">
             <School className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Pestalozzi-Realschule</h1>
+          <h1 className="text-2xl font-bold text-white">Pestalozzi-Schule</h1>
           <p className="mt-1 text-white/60 text-sm">Musterstadt · Schülerportal</p>
         </div>
 
@@ -104,7 +104,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-white/40 mt-6">
-          © 2026 Pestalozzi-Realschule Musterstadt · Alle Rechte vorbehalten
+          © 2026 Pestalozzi-Schule Musterstadt · Alle Rechte vorbehalten
         </p>
       </div>
     </div>

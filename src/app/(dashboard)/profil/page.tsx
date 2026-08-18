@@ -197,8 +197,8 @@ export default function ProfilPage() {
             <School className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
             <div>
               <p className="text-xs text-gray-500 mb-0.5">Schule</p>
-              <p className="text-sm font-medium text-gray-800">Pestalozzi-Realschule</p>
-              <p className="text-xs text-gray-500">Musterstadt</p>
+              <p className="text-sm font-medium text-gray-800">Pestalozzi-Schule</p>
+              <p className="text-xs text-gray-500">Realschule</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -221,7 +221,7 @@ export default function ProfilPage() {
             <Mail className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
             <div>
               <p className="text-xs text-gray-500 mb-0.5">E-Mail</p>
-              <p className="text-sm font-medium text-gray-800">info@pestalozzi-rs.de</p>
+              <p className="text-sm font-medium text-gray-800">info@pestalozzi-schule.de</p>
               <p className="text-xs text-gray-500">Sekretariat</p>
             </div>
           </div>

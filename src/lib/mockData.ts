@@ -151,16 +151,16 @@ export const weeklyChanges: import('@/types').WeeklyChange[] = [
 ];
 
 export const teachers: Teacher[] = [
-  { id: 't1', name: 'Frau Weber', subject: 'Mathematik', email: 'web@pestalozzi-rs.de' },
-  { id: 't2', name: 'Herr Schneider', subject: 'Deutsch', email: 'sch@pestalozzi-rs.de' },
-  { id: 't3', name: 'Frau Müller', subject: 'Englisch', email: 'mue@pestalozzi-rs.de' },
-  { id: 't4', name: 'Herr Braun', subject: 'Physik', email: 'bra@pestalozzi-rs.de' },
-  { id: 't5', name: 'Frau Fischer', subject: 'Geschichte', email: 'fis@pestalozzi-rs.de' },
-  { id: 't6', name: 'Herr Richter', subject: 'Informatik', email: 'ric@pestalozzi-rs.de' },
-  { id: 't7', name: 'Herr Koch', subject: 'Sport', email: 'koc@pestalozzi-rs.de' },
-  { id: 't8', name: 'Frau Lange', subject: 'Kunst', email: 'lan@pestalozzi-rs.de' },
-  { id: 't9', name: 'Herr Wolf', subject: 'Biologie', email: 'wol@pestalozzi-rs.de' },
-  { id: 't10', name: 'Frau Hartmann', subject: 'Chemie', email: 'har@pestalozzi-rs.de' },
+  { id: 't1', name: 'Frau Weber', subject: 'Mathematik', email: 'web@pestalozzi-schule.de' },
+  { id: 't2', name: 'Herr Schneider', subject: 'Deutsch', email: 'sch@pestalozzi-schule.de' },
+  { id: 't3', name: 'Frau Müller', subject: 'Englisch', email: 'mue@pestalozzi-schule.de' },
+  { id: 't4', name: 'Herr Braun', subject: 'Physik', email: 'bra@pestalozzi-schule.de' },
+  { id: 't5', name: 'Frau Fischer', subject: 'Geschichte', email: 'fis@pestalozzi-schule.de' },
+  { id: 't6', name: 'Herr Richter', subject: 'Informatik', email: 'ric@pestalozzi-schule.de' },
+  { id: 't7', name: 'Herr Koch', subject: 'Sport', email: 'koc@pestalozzi-schule.de' },
+  { id: 't8', name: 'Frau Lange', subject: 'Kunst', email: 'lan@pestalozzi-schule.de' },
+  { id: 't9', name: 'Herr Wolf', subject: 'Biologie', email: 'wol@pestalozzi-schule.de' },
+  { id: 't10', name: 'Frau Hartmann', subject: 'Chemie', email: 'har@pestalozzi-schule.de' },
 ];
 
 export const vertretungsplan: VertretungsEntry[] = [

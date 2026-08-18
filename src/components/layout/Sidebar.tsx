@@ -51,24 +51,14 @@ export default function Sidebar() {
 
   return (
     <aside className="hidden lg:flex flex-col w-60 shrink-0 bg-school-primary text-white h-screen sticky top-0">
-      {/* Logo + Schüler-Info */}
+      {/* Logo */}
       <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 shrink-0">
           <School className="h-5 w-5 text-white" />
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-bold leading-tight">Pestalozzi-RS</p>
+        <div className="min-w-0">
+          <p className="text-sm font-bold leading-tight">Pestalozzi Schule</p>
           <p className="text-xs text-white/60 leading-tight">Musterstadt</p>
-        </div>
-        {/* Schüler-Avatar oben rechts */}
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="text-right hidden xl:block">
-            <p className="text-xs font-medium text-white leading-tight">Jonas Frey</p>
-            <p className="text-[10px] text-white/50 leading-tight">10A · S2024001</p>
-          </div>
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-xs font-bold text-white shrink-0">
-            JF
-          </div>
         </div>
       </div>
 

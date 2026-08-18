@@ -1,32 +1,16 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { School } from 'lucide-react';
-
-const pageTitles: Record<string, string> = {
-  '/dashboard': 'Übersicht',
-  '/stundenplan': 'Stundenplan',
-  '/noten': 'Notenübersicht',
-  '/lehrer': 'Lehrkräfte',
-  '/vertretungsplan': 'Vertretungsplan',
-  '/abgaben': 'Digitale Abgaben',
-  '/krankmeldung': 'Krankmeldung',
-  '/termine': 'Termine',
-  '/profil': 'Mein Profil',
-};
-
 export default function TopBar() {
-  const pathname = usePathname();
-  const title = pageTitles[pathname] ?? 'Schülerportal';
-
   return (
-    <header className="lg:hidden flex items-center gap-3 px-4 py-3 bg-school-primary text-white border-b border-white/10">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
-        <School className="h-4 w-4" />
-      </div>
-      <div>
-        <p className="text-xs text-white/60 leading-none">Pestalozzi-Realschule Musterstadt</p>
-        <p className="text-sm font-semibold leading-tight">{title}</p>
+    <header className="flex items-center justify-end px-5 py-3 bg-white border-b border-gray-200 shadow-sm">
+      <div className="flex items-center gap-2.5">
+        <div className="text-right hidden sm:block">
+          <p className="text-sm font-semibold text-gray-900 leading-tight">Jonas Frey</p>
+          <p className="text-xs text-gray-400 leading-tight">Klasse 10A · S2024001</p>
+        </div>
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-school-primary text-white text-xs font-bold shrink-0">
+          JF
+        </div>
       </div>
     </header>
   );
