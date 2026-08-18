@@ -10,14 +10,14 @@ const dayNames: Record<string, string> = { Mo: 'Montag', Di: 'Dienstag', Mi: 'Mi
 const dayKeys = ['Mo', 'Di', 'Mi', 'Do', 'Fr'] as const;
 
 const subjectBg: Record<string, string> = {
-  blue: 'bg-blue-50 border-blue-200 text-blue-800',
+  blue:    'bg-blue-50 border-blue-200 text-blue-800',
+  red:     'bg-red-50 border-red-200 text-red-800',
+  yellow:  'bg-yellow-50 border-yellow-200 text-yellow-800',
   emerald: 'bg-emerald-50 border-emerald-200 text-emerald-800',
-  violet: 'bg-violet-50 border-violet-200 text-violet-800',
-  amber: 'bg-amber-50 border-amber-200 text-amber-800',
-  rose: 'bg-rose-50 border-rose-200 text-rose-800',
-  cyan: 'bg-cyan-50 border-cyan-200 text-cyan-800',
-  orange: 'bg-orange-50 border-orange-200 text-orange-800',
-  pink: 'bg-pink-50 border-pink-200 text-pink-800',
+  orange:  'bg-orange-50 border-orange-200 text-orange-800',
+  cyan:    'bg-cyan-50 border-cyan-200 text-cyan-800',
+  violet:  'bg-violet-50 border-violet-200 text-violet-800',
+  stone:   'bg-stone-50 border-stone-200 text-stone-800',
 };
 
 export default function DashboardPage() {

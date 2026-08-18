@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { grades } from '@/lib/mockData';
-import { getGradeColor } from '@/lib/utils';
+import { getGradeColor, getSubjectColor } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from '@/components/ui/Card';
 import { GraduationCap } from 'lucide-react';
 
@@ -61,7 +61,12 @@ export default function NotenPage() {
                 <tbody className="divide-y divide-gray-50">
                   {rows.map((row) => (
                     <tr key={row.subject} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="px-6 py-3 text-sm font-medium text-gray-800">{row.subject}</td>
+                      <td className="px-6 py-3">
+                        <div className="flex items-center gap-2">
+                          <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${getSubjectColor(row.subject).dot}`} />
+                          <span className="text-sm font-medium text-gray-800">{row.subject}</span>
+                        </div>
+                      </td>
                       {row.grades.map((g, i) => (
                         <td key={i} className="px-4 py-3 text-center">
                           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-sm font-semibold text-gray-700 mx-auto">

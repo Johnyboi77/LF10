@@ -4,14 +4,16 @@ import { useState, useMemo } from 'react';
 import { schoolEvents } from '@/lib/mockData';
 import type { EventCategory } from '@/types';
 import { Search, CalendarDays, BookOpen, Star, Bus, Users, Palmtree } from 'lucide-react';
+import { getSubjectColor } from '@/lib/utils';
 
 const categoryConfig: Record<EventCategory, { label: string; border: string; text: string; icon: React.ElementType }> = {
-  klassenarbeit:      { label: 'Klassenarbeit',      border: 'border-l-red-400',    text: 'text-red-700',    icon: BookOpen },
+  klassenarbeit:      { label: 'Klassenarbeit',      border: 'border-l-gray-300',   text: 'text-gray-700',   icon: BookOpen },
   schulveranstaltung: { label: 'Schulveranstaltung', border: 'border-l-violet-400', text: 'text-violet-700', icon: Star },
   ausflug:            { label: 'Ausflug',             border: 'border-l-cyan-400',   text: 'text-cyan-700',   icon: Bus },
   eltern:             { label: 'Elternevent',         border: 'border-l-amber-400',  text: 'text-amber-700',  icon: Users },
   feiertag:           { label: 'Ferien / Feiertag',   border: 'border-l-green-400',  text: 'text-green-700',  icon: Palmtree },
 };
+
 
 const PRESENTATION_DATE = new Date('2026-09-22');
 const WINDOW_END = new Date('2026-11-17');
@@ -126,17 +128,22 @@ export default function TerminePage() {
                 <div className="space-y-2">
                   {events.map((event) => {
                     const cfg = categoryConfig[event.category];
+                    const sc = event.category === 'klassenarbeit' && event.subject
+                      ? getSubjectColor(event.subject)
+                      : null;
+                    const border = sc?.border ?? cfg.border;
+                    const textColor = sc?.text ?? cfg.text;
                     const Icon = cfg.icon;
                     const inWindow = isInWindow(event);
                     const isMultiDay = event.endDate && event.endDate !== event.date;
                     return (
                       <div
                         key={event.id}
-                        className={`bg-white rounded-xl border border-gray-200 border-l-4 ${cfg.border} px-5 py-4 ${inWindow ? 'shadow-sm ring-1 ring-school-primary/10' : ''}`}
+                        className={`bg-white rounded-xl border border-gray-200 border-l-4 ${border} px-5 py-4 ${inWindow ? 'shadow-sm ring-1 ring-school-primary/10' : ''}`}
                       >
                         <div className="flex items-start justify-between gap-3 flex-wrap">
                           <div className="flex items-start gap-3 min-w-0">
-                            <Icon className={`h-4 w-4 mt-0.5 shrink-0 ${cfg.text}`} />
+                            <Icon className={`h-4 w-4 mt-0.5 shrink-0 ${textColor}`} />
                             <div className="min-w-0">
                               <div className="flex items-center gap-2 flex-wrap">
                                 <p className="text-sm font-semibold text-gray-900">{event.title}</p>

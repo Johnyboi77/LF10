@@ -12,13 +12,13 @@ const dayLabels: Record<string, string> = {
 
 const colorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
   blue:    { bg: 'bg-blue-50',    border: 'border-l-blue-400',    text: 'text-blue-900',    badge: 'bg-blue-100 text-blue-700' },
+  red:     { bg: 'bg-red-50',     border: 'border-l-red-400',     text: 'text-red-900',     badge: 'bg-red-100 text-red-700' },
+  yellow:  { bg: 'bg-yellow-50',  border: 'border-l-yellow-400',  text: 'text-yellow-900',  badge: 'bg-yellow-100 text-yellow-700' },
   emerald: { bg: 'bg-emerald-50', border: 'border-l-emerald-400', text: 'text-emerald-900', badge: 'bg-emerald-100 text-emerald-700' },
-  violet:  { bg: 'bg-violet-50',  border: 'border-l-violet-400',  text: 'text-violet-900',  badge: 'bg-violet-100 text-violet-700' },
-  amber:   { bg: 'bg-amber-50',   border: 'border-l-amber-400',   text: 'text-amber-900',   badge: 'bg-amber-100 text-amber-700' },
-  rose:    { bg: 'bg-rose-50',    border: 'border-l-rose-400',    text: 'text-rose-900',    badge: 'bg-rose-100 text-rose-700' },
-  cyan:    { bg: 'bg-cyan-50',    border: 'border-l-cyan-400',    text: 'text-cyan-900',    badge: 'bg-cyan-100 text-cyan-700' },
   orange:  { bg: 'bg-orange-50',  border: 'border-l-orange-400',  text: 'text-orange-900',  badge: 'bg-orange-100 text-orange-700' },
-  pink:    { bg: 'bg-pink-50',    border: 'border-l-pink-400',    text: 'text-pink-900',    badge: 'bg-pink-100 text-pink-700' },
+  cyan:    { bg: 'bg-cyan-50',    border: 'border-l-cyan-400',    text: 'text-cyan-900',    badge: 'bg-cyan-100 text-cyan-700' },
+  violet:  { bg: 'bg-violet-50',  border: 'border-l-violet-400',  text: 'text-violet-900',  badge: 'bg-violet-100 text-violet-700' },
+  stone:   { bg: 'bg-stone-50',   border: 'border-l-stone-400',   text: 'text-stone-900',   badge: 'bg-stone-100 text-stone-700' },
 };
 
 function getLesson(day: string, period: number): Lesson | undefined {
@@ -56,20 +56,20 @@ export default function StundenplanPage() {
 
     if (change?.type === 'vertretung') {
       return (
-        <div className="rounded-lg border-l-4 border-l-amber-500 bg-amber-50 px-2 py-1.5 h-full relative">
-          <div className="text-xs font-bold text-amber-900 line-through opacity-50">{lesson.subject}</div>
-          <div className="text-xs font-semibold text-amber-800 mt-0.5">↕ {change.substitute}</div>
-          <div className="text-xs text-amber-600">{change.newRoom ?? lesson.room}</div>
-          <span className="absolute top-1 right-1 rounded text-xs bg-amber-200 text-amber-800 px-1 font-bold">V</span>
+        <div className="rounded-lg border-l-4 border-l-yellow-400 bg-yellow-50 px-2 py-1.5 h-full relative">
+          <div className="text-xs font-bold text-yellow-900 line-through opacity-50">{lesson.subject}</div>
+          {change.substitute && <div className="text-xs font-semibold text-yellow-800 mt-0.5">↕ {change.substitute}</div>}
+          {change.newRoom && change.newRoom !== lesson.room && <div className="text-xs text-yellow-700">→ {change.newRoom}</div>}
+          <span className="absolute top-1 right-1 rounded text-xs bg-yellow-200 text-yellow-800 px-1 font-bold">V</span>
         </div>
       );
     }
 
-    // Reguläre Stunde — in Live-Modus neutral damit Änderungen hervorstechen
+    // Aktuelle Woche: reguläre Stunden grau, damit Änderungen auffallen
     if (showLive) {
       return (
         <div className="rounded-lg border-l-4 border-l-gray-200 bg-gray-50 px-2 py-1.5 h-full">
-          <div className="text-xs font-semibold text-gray-600">{lesson.subject}</div>
+          <div className="text-xs font-semibold text-gray-500">{lesson.subject}</div>
           <div className="text-xs text-gray-400 mt-0.5">{lesson.teacher}</div>
           <div className="text-xs text-gray-400">{lesson.room}</div>
         </div>
@@ -114,16 +114,15 @@ export default function StundenplanPage() {
             <div className="text-xs font-medium text-gray-600">{period}. Std</div>
             <div className="text-xs text-gray-400">{p?.startTime}</div>
           </div>
-          <div className="rounded border-l-4 border-l-amber-500 bg-amber-50 px-2 py-1.5 flex-1">
-            <div className="text-sm font-semibold text-amber-900 line-through opacity-50">{lesson.subject}</div>
-            <div className="text-xs text-amber-800 font-semibold">↕ Vertretung: {change.substitute}</div>
-            <div className="text-xs text-amber-600">{change.newRoom ?? lesson.room}</div>
+          <div className="rounded border-l-4 border-l-yellow-400 bg-yellow-50 px-2 py-1.5 flex-1">
+            <div className="text-sm font-semibold text-yellow-900 line-through opacity-50">{lesson.subject}</div>
+            {change.substitute && <div className="text-xs text-yellow-800 font-semibold">↕ {change.substitute}</div>}
+            {change.newRoom && change.newRoom !== lesson.room && <div className="text-xs text-yellow-700">→ {change.newRoom}</div>}
           </div>
         </div>
       );
     }
 
-    // Reguläre Stunde mobile — in Live-Modus neutral
     if (showLive) {
       return (
         <div key={period} className="flex items-center gap-3 px-4 py-3">
@@ -251,6 +250,24 @@ export default function StundenplanPage() {
           );
         })}
       </div>
+
+      {/* Legende — nur in Aktuelle Woche */}
+      {showLive && (
+        <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded border-l-2 border-l-red-400 bg-red-50 inline-block" />
+            Entfall
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded border-l-2 border-l-yellow-400 bg-yellow-50 inline-block" />
+            Vertretung
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded border-l-2 border-l-gray-200 bg-gray-50 inline-block" />
+            Reguläre Stunde
+          </span>
+        </div>
+      )}
 
     </div>
   );

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Upload, CheckCircle, Clock, Award, FileText } from 'lucide-react';
 import { assignments } from '@/lib/mockData';
+import { getSubjectColor } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 import Toast from '@/components/ui/Toast';
 import type { Assignment, AssignmentStatus } from '@/types';
@@ -72,14 +73,15 @@ export default function AbgabenPage() {
           const isOpen = openSubjects.has(subject);
           const pendingCount = subjectAssignments.filter((a) => a.status === 'ausstehend').length;
 
+          const sc = getSubjectColor(subject);
           return (
-            <div key={subject} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div key={subject} className={`bg-white rounded-xl border border-gray-200 border-l-4 ${sc.border} shadow-sm overflow-hidden`}>
               <button
                 onClick={() => toggleSubject(subject)}
                 className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50/50 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <FileText className="h-5 w-5 text-school-primary" />
+                  <FileText className={`h-5 w-5 ${sc.text}`} />
                   <span className="text-sm font-semibold text-gray-800">{subject}</span>
                   <span className="text-xs text-gray-400">{subjectAssignments.length} Aufgaben</span>
                   {pendingCount > 0 && (

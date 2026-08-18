@@ -1,4 +1,5 @@
 import { vertretungsplan } from '@/lib/mockData';
+import { getSubjectColor } from '@/lib/utils';
 import { Card, CardHeader, CardContent } from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { AlertTriangle } from 'lucide-react';
@@ -46,15 +47,21 @@ export default function VertretungsplanPage() {
                 {vertretungsplan.map((entry) => {
                   const roomChanged = entry.newRoom !== entry.originalRoom;
                   const isEntfall = entry.substitute === 'Entfall';
+                  const sc = getSubjectColor(entry.subject);
                   return (
                     <tr key={entry.id} className={`hover:bg-gray-50/50 transition-colors ${isEntfall ? 'bg-red-50/30' : ''}`}>
-                      <td className="px-4 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">{entry.date}</td>
+                      <td className={`px-4 py-3 text-sm font-medium text-gray-700 whitespace-nowrap border-l-4 ${sc.border}`}>{entry.date}</td>
                       <td className="px-4 py-3 text-center">
                         <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-gray-700">
                           {entry.period}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-800">{entry.subject}</td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${getSubjectColor(entry.subject).bg} ${getSubjectColor(entry.subject).text}`}>
+                          <span className={`h-1.5 w-1.5 rounded-full ${getSubjectColor(entry.subject).dot}`} />
+                          {entry.subject}
+                        </span>
+                      </td>
                       <td className="px-4 py-3 text-sm text-gray-500 line-through">{entry.originalTeacher}</td>
                       <td className="px-4 py-3">
                         {isEntfall ? (
@@ -88,12 +95,19 @@ export default function VertretungsplanPage() {
         {vertretungsplan.map((entry) => {
           const isEntfall = entry.substitute === 'Entfall';
           const roomChanged = entry.newRoom !== entry.originalRoom;
+          const sc2 = getSubjectColor(entry.subject);
           return (
-            <Card key={entry.id} className={`p-4 ${isEntfall ? 'border-red-200 bg-red-50/30' : ''}`}>
+            <Card key={entry.id} className={`p-4 border-l-4 ${sc2.border} ${isEntfall ? 'border-red-200 bg-red-50/30' : ''}`}>
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div>
                   <p className="text-sm font-semibold text-gray-800">{entry.date}</p>
-                  <p className="text-xs text-gray-500">{entry.period}. Stunde · {entry.subject}</p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-xs text-gray-500">{entry.period}. Stunde ·</span>
+                    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${getSubjectColor(entry.subject).bg} ${getSubjectColor(entry.subject).text}`}>
+                      <span className={`h-1.5 w-1.5 rounded-full ${getSubjectColor(entry.subject).dot}`} />
+                      {entry.subject}
+                    </span>
+                  </div>
                 </div>
                 {isEntfall ? <Badge variant="danger">Entfall</Badge> : <Badge variant="warning">Vertretung</Badge>}
               </div>
