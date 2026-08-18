@@ -71,7 +71,7 @@ export default function StundenplanPage() {
         <div className="rounded-lg border-l-4 border-l-gray-200 bg-gray-50 px-2 py-1.5 h-full">
           <div className="text-xs font-semibold text-gray-600">{lesson.subject}</div>
           <div className="text-xs text-gray-400 mt-0.5">{lesson.teacher}</div>
-          <div className="text-xs text-gray-300">{lesson.room}</div>
+          <div className="text-xs text-gray-400">{lesson.room}</div>
         </div>
       );
     }
@@ -160,7 +160,7 @@ export default function StundenplanPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Stundenplan</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Klasse 10A · Schuljahr 2024/25</p>
+          <p className="text-sm text-gray-500 mt-0.5">Klasse 10A · Schuljahr 2026/27</p>
         </div>
 
         {/* Toggle */}

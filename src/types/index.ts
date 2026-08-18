@@ -71,6 +71,19 @@ export interface Assignment {
   description?: string;
 }
 
+export type EventCategory = 'klassenarbeit' | 'schulveranstaltung' | 'ausflug' | 'eltern' | 'feiertag';
+
+export interface SchoolEvent {
+  id: string;
+  title: string;
+  date: string;
+  endDate?: string;
+  category: EventCategory;
+  subject?: string;
+  createdBy?: string;
+  description?: string;
+}
+
 export interface Notification {
   id: string;
   title: string;

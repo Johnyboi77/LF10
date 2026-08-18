@@ -31,6 +31,7 @@ Diese Daten befinden sich im Einschreibebrief:
 | `/vertretungsplan` | Vertretungsplan für Klasse 10A |
 | `/abgaben` | Digitale Abgaben nach Fach |
 | `/krankmeldung` | Krankmeldung per Formular |
+| `/termine` | Schultermine (Klassenarbeiten, Veranstaltungen) |
 | `/profil` | Schülerprofil und Passwort ändern |
 
 ---
@@ -44,6 +45,15 @@ npm run dev
 
 Öffne [http://localhost:3000](http://localhost:3000) im Browser.
 Du wirst automatisch zur Login-Seite weitergeleitet.
+
+---
+
+## LF10-Präsentation
+
+Die Demo ist auf die **letzte Septemberwoche 2026** ausgerichtet (Präsentationsdatum: **22.09.2026**).
+
+- Die Seite **Termine** zeigt alle Schultermine der nächsten **8 Wochen** ab dem 22.09.2026 (bis 17.11.2026) hervorgehoben an — ältere Einträge aus dem Schuljahr erscheinen gedimmt.
+- Vertretungsplan, Abgaben und weitere Termine sind ebenfalls auf den Zeitraum September / Oktober 2026 datiert.
 
 ---
 

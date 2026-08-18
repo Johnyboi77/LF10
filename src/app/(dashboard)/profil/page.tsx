@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Eye, EyeOff, User, Lock, CheckCircle } from 'lucide-react';
+import { Eye, EyeOff, User, Lock, CheckCircle, School, MapPin, Phone, Mail } from 'lucide-react';
 import { student } from '@/lib/mockData';
 import Toast from '@/components/ui/Toast';
 
@@ -183,6 +183,48 @@ export default function ProfilPage() {
               Demo-Modus — Passwort wird nicht tatsächlich geändert.
             </p>
           </form>
+        </div>
+      </div>
+
+      {/* Schulinformationen */}
+      <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="flex items-center gap-2 mb-5">
+          <School className="h-5 w-5 text-school-primary" />
+          <h2 className="text-base font-semibold text-gray-800">Schulinformationen</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex items-start gap-3">
+            <School className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
+            <div>
+              <p className="text-xs text-gray-500 mb-0.5">Schule</p>
+              <p className="text-sm font-medium text-gray-800">Pestalozzi-Realschule</p>
+              <p className="text-xs text-gray-500">Musterstadt</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <MapPin className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
+            <div>
+              <p className="text-xs text-gray-500 mb-0.5">Adresse</p>
+              <p className="text-sm font-medium text-gray-800">Schulstraße 12</p>
+              <p className="text-xs text-gray-500">12345 Musterstadt</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Phone className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
+            <div>
+              <p className="text-xs text-gray-500 mb-0.5">Telefon</p>
+              <p className="text-sm font-medium text-gray-800">(01234) 56789-0</p>
+              <p className="text-xs text-gray-500">Mo–Fr 7:30–15:00</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Mail className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
+            <div>
+              <p className="text-xs text-gray-500 mb-0.5">E-Mail</p>
+              <p className="text-sm font-medium text-gray-800">info@pestalozzi-rs.de</p>
+              <p className="text-xs text-gray-500">Sekretariat</p>
+            </div>
+          </div>
         </div>
       </div>
 

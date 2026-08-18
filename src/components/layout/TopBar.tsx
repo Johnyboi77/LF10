@@ -11,6 +11,7 @@ const pageTitles: Record<string, string> = {
   '/vertretungsplan': 'Vertretungsplan',
   '/abgaben': 'Digitale Abgaben',
   '/krankmeldung': 'Krankmeldung',
+  '/termine': 'Termine',
   '/profil': 'Mein Profil',
 };
 
@@ -24,7 +25,7 @@ export default function TopBar() {
         <School className="h-4 w-4" />
       </div>
       <div>
-        <p className="text-xs text-white/60 leading-none">Schule Musterstadt</p>
+        <p className="text-xs text-white/60 leading-none">Pestalozzi-Realschule Musterstadt</p>
         <p className="text-sm font-semibold leading-tight">{title}</p>
       </div>
     </header>
