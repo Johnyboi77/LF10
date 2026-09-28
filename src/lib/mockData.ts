@@ -143,8 +143,8 @@ export const grades: GradeRow[] = [
 // Aktuelle Wochenstundenplanänderungen
 export const weeklyChanges: import('@/types').WeeklyChange[] = [
   // Montag: Mathematik Std. 1+2 Entfall
-  { day: 'Mo', period: 1, type: 'entfall' note: 'Frau Weber' },
-  { day: 'Mo', period: 2, type: 'entfall' note: 'Frau Weber' },
+  { day: 'Mo', period: 1, type: 'entfall', note: 'Frau Weber' },
+  { day: 'Mo', period: 2, type: 'entfall', note: 'Frau Weber' },
   // Donnerstag: Std. 5 Entfall, Std. 7 Vertretung
   { day: 'Do', period: 5, type: 'entfall' },
   { day: 'Do', period: 7, type: 'vertretung', substitute: 'Herr Wolf', newRoom: 'R205', note: 'Raumwechsel' },
