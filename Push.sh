@@ -23,5 +23,5 @@ git pull origin "$BRANCH"
 
 # DANN adden & committen
 git add .
-git commit -m "$(date '+%Y-%m-%d %H:%M:%S') - Initial Commit"
+git commit -m "$(date '+%Y-%m-%d %H:%M:%S') - DSGVO Update"
 git push origin "$BRANCH"
