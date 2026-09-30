@@ -61,7 +61,7 @@ Meldet den Nutzer ab und leitet zur Login Seite weiter
 
 ## LF10-Präsentation
 
-Die Demo ist auf die **letzte Septemberwoche 2026** ausgerichtet (Präsentationsdatum: **22.09.2026**).Die angezeigten Daten enstrpechen fiktive Daten eines Schülers Namens Jonas Frey.
+Die Demo ist auf die **letzte Septemberwoche 2026** ausgerichtet (Präsentationsdatum: **22.09.2026**).Die angezeigten Daten entsprechen fiktive Daten eines Schülers Namens Jonas Frey.
 
 - Die Seite **Termine** zeigt alle Schultermine der nächsten **8 Wochen** ab dem 22.09.2026 (bis 17.11.2026) hervorgehoben an — ältere Einträge aus dem Schuljahr erscheinen gedimmt.
 - Vertretungsplan, Abgaben und weitere Termine sind ebenfalls auf den Zeitraum September / Oktober 2026 datiert.
